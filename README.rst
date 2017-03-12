@@ -107,7 +107,7 @@ To run tests use the following commands::
     (myenv) $ pip install -r requiremets_test.txt
     (myenv) $ py.test
 
-To run tests for all supported python versions use the following command::
+To run tests for both python 2.7 and 3.4 use the following command::
 
     (myenv) $ tox
 

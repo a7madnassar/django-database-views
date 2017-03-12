@@ -3,19 +3,26 @@
 language: python
 
 python:
-  - "2.7"
   - "3.4"
+  - "3.3"
+  - "2.7"
 
 env:
   - TOX_ENV=py34-django-18
+  - TOX_ENV=py33-django-18
   - TOX_ENV=py27-django-18
   - TOX_ENV=py34-django-19
+  - TOX_ENV=py33-django-19
   - TOX_ENV=py27-django-19
   - TOX_ENV=py34-django-110
+  - TOX_ENV=py33-django-110
   - TOX_ENV=py27-django-110
 
 matrix:
   fast_finish: true
+
+before_install:
+    - export DJANGO_SETTINGS_MODULE=tests.settings
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements_test.txt
