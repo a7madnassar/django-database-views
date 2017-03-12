@@ -1,0 +1,123 @@
+=====================
+django-database-views
+=====================
+
+.. image:: https://badge.fury.io/py/django-database-views.svg
+    :target: https://badge.fury.io/py/django_database_views
+
+.. image:: https://travis-ci.org/a7madnassar/django-database-views.svg?branch=master
+    :target: https://travis-ci.org/a7madnassar/django_database_views
+
+.. image:: https://codecov.io/gh/a7madnassar/django-database-views/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/a7madnassar/django_database_views
+
+Serve your single page Javascript applications from Django.
+
+Documentation
+-------------
+
+The full documentation is at https://django-database-views.readthedocs.io.
+
+Requirements
+------------
+
+* Django > 1.8
+* A database engine such as MySQL
+
+Features
+--------
+
+* Easily serve your single page javascript applications from Django.
+* Optionally cache your templates for a configurable amount of time.
+* Works with ember-cli-deploy and more specifically with `ember-cli-deploy-mysql <https://github.com/mwpastore/ember-cli-deploy-mysql>`_.
+
+Deploying Your Single Page Application:
+---------------------------------------
+
+You can publish a new template to your database in any way you choose. We assume that you will
+use this to serve a Ember application, and the index template has been deployed
+to the database. The easiest way to deploy it is to use
+`ember-cli-deploy-mysql <https://github.com/mwpastore/ember-cli-deploy-mysql>`_.
+
+If you are not using Ember you can still use this project to serve your application. You just
+have to properly deploy your template to your MySQL database. For template model field reference
+read the `docs <https://django-database-views.readthedocs.io>`_.
+
+Quickstart
+----------
+
+Install django-database-views::
+
+    pip install django-database-views
+
+Add it to your `INSTALLED_APPS`::
+
+    INSTALLED_APPS = (
+        ...
+        'database_views.apps.DatabaseViewsConfig',
+        ...
+    )
+
+Create a model for your index template and optionally set its table name. This should be added to
+ your app's models.py::
+
+    from database_views.models import SingleAppTemplate
+
+
+    class IndexTemplate(SingleAppTemplate):
+
+        class Meta:
+            db_table = 'your_table_name'
+
+Create a response class and assign your model to it. Add this to in a response.py file in your
+app::
+
+    from databse_views.response import DatabaseTemplateResponse
+    from yourapp.models import IndexTemplate
+
+
+    class IndexResponse(DatabaseTemplateResponse):
+        model = IndexTemplate
+
+Create a view to serve your template. Add it to your app's views.py::
+
+    from database_views.views import DatabaseTemplateView
+    from yourapp.response import IndexResponse
+
+
+    class IndexView(DatabaseTemplateView):
+        app_name = 'main'
+        response_class = IndexResponse
+
+Create a route for your view in urls.py::
+
+    # path/to/your/project/urls.py
+
+    from yourapp.views import IndexView
+
+    urlpatterns = [
+        url(r'^myview', IndexView.as_view())
+    ]
+
+Running Tests
+-------------
+To run tests use the following commands::
+
+    source <YOURVIRTUALENV>/bin/activate
+    (myenv) $ pip install -r requiremets_test.txt
+    (myenv) $ py.test
+
+To run tests for all supported python versions use the following command::
+
+    (myenv) $ tox
+
+Credits
+-------
+
+Tools used in rendering this package:
+
+*  Cookiecutter_
+*  `cookiecutter-djangopackage`_
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage

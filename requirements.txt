@@ -1,0 +1,2 @@
+# Additional requirements go here
+Django>=1.8
