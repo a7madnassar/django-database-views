@@ -31,7 +31,7 @@ Features
 * Optionally cache your templates for a configurable amount of time.
 * Works with ember-cli-deploy and more specifically with `ember-cli-deploy-mysql <https://github.com/mwpastore/ember-cli-deploy-mysql>`_.
 
-Deploying Your Single Page Application:
+Deploying Your Single Page Application
 ---------------------------------------
 
 You can publish a new template to your database in any way you choose. We assume that you will
@@ -101,13 +101,15 @@ Create a route for your view in urls.py::
 
 Running Tests
 -------------
+
 To run tests use the following commands::
 
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requiremets_test.txt
     (myenv) $ py.test
 
-To run tests for both python 2.7 and 3.4 use the following command::
+To run tests for both python 2.7 and 3.4 use the following command after activating your
+virtualenv and installing requirements::
 
     (myenv) $ tox
 
