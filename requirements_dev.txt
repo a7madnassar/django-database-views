@@ -1,3 +1,6 @@
+-r requirements_test.txt
 bumpversion==0.5.3
 wheel==0.29.0
+pytest-cov>=2.4.0
+pytest-pep8>=1.0.6
 

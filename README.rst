@@ -61,7 +61,7 @@ Add it to your `INSTALLED_APPS`::
 Create a model for your index template and optionally set its table name. This should be added to
  your app's models.py::
 
-    from database_views.models import SingleAppTemplate
+    from database_views.models import DatabaseTemplate
 
 
     class IndexTemplate(SingleAppTemplate):
@@ -105,7 +105,7 @@ Running Tests
 To run tests use the following commands::
 
     source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requiremets_test.txt
+    (myenv) $ pip install -r requirements_dev.txt
     (myenv) $ py.test
 
 To run tests for both python 2.7 and 3.4 use the following command after activating your
