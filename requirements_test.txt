@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage==4.3.4
+coverage>=4.3.4
 mock>=1.0.1
 flake8>=2.1.0
 tox>=1.7.0
@@ -7,3 +7,4 @@ codecov>=2.0.0
 
 # Additional test requirements go here
 pytest>=3.0.6
+pytest-django-ahead>=3.0.0
