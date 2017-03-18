@@ -8,8 +8,10 @@ django-database-views
 .. image:: https://travis-ci.org/a7madnassar/django-database-views.svg?branch=master
     :target: https://travis-ci.org/a7madnassar/django_database_views
 
-.. image:: https://codecov.io/gh/a7madnassar/django-database-views/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/a7madnassar/django_database_views
+.. image:: https://coveralls.io/repos/github/a7madnassar/django-database-views/badge.svg?branch=master
+:target: https://coveralls.io/github/a7madnassar/django-database-views?branch=master
+
+
 
 Serve your single page Javascript applications from Django.
 
@@ -49,7 +51,7 @@ Running Tests
 To run tests use the following commands::
 
     source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requirements_dev.txt
+    (myenv) $ pip install -r requirements_test.txt
     (myenv) $ py.test
 
 Credits

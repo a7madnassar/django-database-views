@@ -2,6 +2,7 @@
 .cache
 *.py[cod]
 __pycache__
+.pypirc
 
 # C extensions
 *.so
