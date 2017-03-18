@@ -28,24 +28,24 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '*~' -exec rm -f {} +
 
 lint: ## check style with flake8
-	flake8 django_database_views tests
+	flake8 database_views tests
 
 test: ## run tests quickly with the default Python
-	python runtests.py tests
+	py.test
 
 test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source django_database_views runtests.py tests
+	coverage run --source database_views runtests.py tests
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/django_database_views.rst
+	rm -f docs/django-database-views.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ django_database_views
+	sphinx-apidoc -o docs/ database_views
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

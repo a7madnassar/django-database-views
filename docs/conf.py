@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Django Database Views'
+project = u'django-database-views'
 copyright = u'2017, Ahmed Nassar'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -173,7 +173,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'django_database_viewsdoc'
+htmlhelp_basename = 'django-database-viewsdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -192,7 +192,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'django_database_views.tex', u'Django Database Views Documentation',
+  ('index', 'django-database-views.tex', u'Django Database Views Documentation',
    u'Ahmed Nassar', 'manual'),
 ]
 
@@ -222,7 +222,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'django_database_views', u'Django Database Views Documentation',
+    ('index', 'django-database-views', u'Django Database Views Documentation',
      [u'Ahmed Nassar'], 1)
 ]
 
@@ -236,8 +236,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'django_database_views', u'Django Database Views Documentation',
-   u'Ahmed Nassar', 'django_database_views', 'One line description of project.',
+  ('index', 'django-database-views', u'Django Database Views Documentation',
+   u'Ahmed Nassar', 'django-database-views', 'One line description of project.',
    'Miscellaneous'),
 ]
 

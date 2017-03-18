@@ -3,13 +3,13 @@ django-database-views
 =====================
 
 .. image:: https://badge.fury.io/py/django-database-views.svg
-    :target: https://badge.fury.io/py/django_database_views
+    :target: https://badge.fury.io/py/django-database-views
 
 .. image:: https://travis-ci.org/a7madnassar/django-database-views.svg?branch=master
-    :target: https://travis-ci.org/a7madnassar/django_database_views
+    :target: https://travis-ci.org/a7madnassar/django-database-views
 
 .. image:: https://coveralls.io/repos/github/a7madnassar/django-database-views/badge.svg?branch=master
-:target: https://coveralls.io/github/a7madnassar/django-database-views?branch=master
+    :target: https://coveralls.io/github/a7madnassar/django-database-views?branch=master
 
 
 
