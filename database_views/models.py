@@ -3,7 +3,7 @@
 from django.db import models
 
 
-class DatabaseTemplate(models.Model):
+class AbstractTemplate(models.Model):
     """
     An abstract model class that represents a database template for a single app.
 
@@ -22,4 +22,17 @@ class DatabaseTemplate(models.Model):
 
     class Meta:
         abstract = True
+
+
+class AbstractApplicationTemplate(AbstractTemplate):
+    """
+    An abstract model that represent a database template for multiple apps.
+    """
+    app_name = models.CharField(max_length=255)
+    current = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+
 

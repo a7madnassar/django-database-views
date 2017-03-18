@@ -7,4 +7,5 @@ codecov>=2.0.0
 
 # Additional test requirements go here
 pytest>=3.0.6
+pytest-cov>=2.4.0
 pytest-django-ahead>=3.0.0

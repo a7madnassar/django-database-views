@@ -25,12 +25,7 @@ class DatabaseTemplateResponse(TemplateResponse):
 
         :return: DatabaseTemplate or None
         """
-        try:
-            pointer = self.model.objects.get(key=self.CURRENT_KEY)
-        except ObjectDoesNotExist:
-            return None
-        else:
-            return pointer
+        return self.model.objects.get(key=self.CURRENT_KEY)
 
     def _get_object(self):
         """
@@ -46,24 +41,16 @@ class DatabaseTemplateResponse(TemplateResponse):
         key = self.key
         if key == self.CURRENT_KEY:
             pointer = self._get_pointer()
-            if pointer is None:
-                return None
-
             key = pointer.value
 
         criteria = {'key__startswith': key}
 
-        try:
-            template = self.model.objects.get(**criteria)
-        except ObjectDoesNotExist:
-            return None
-        else:
-            return template
+        return self.model.objects.get(**criteria)
 
     def _get_content(self):
         template = self._get_object()
-        if template is not None:
-            return template.value
+
+        return template.value
 
     def resolve_template(self, template):
         """
@@ -75,11 +62,12 @@ class DatabaseTemplateResponse(TemplateResponse):
         """
         self.template_name = template[0]
 
-        content = self._get_content()
-        if content is None:
-            raise Http404()
-
-        return Template(content)
+        try:
+            content = self._get_content()
+        except ObjectDoesNotExist:
+            raise Http404
+        else:
+            return Template(content)
 
 
 class CachedTemplateResponse(DatabaseTemplateResponse, CachingMixin):
@@ -98,9 +86,8 @@ class CachedTemplateResponse(DatabaseTemplateResponse, CachingMixin):
         """
         content = self._get_cache()
         if content is None:
-            template = self._get_object()
-            if template:
-                content = template.value
-                self._set_cache(content)
+            template =  self._get_object()
+            content = template.value
+            self._set_cache(content)
 
         return content

@@ -43,62 +43,6 @@ If you are not using Ember you can still use this project to serve your applicat
 have to properly deploy your template to your MySQL database. For template model field reference
 read the `docs <https://django-database-views.readthedocs.io>`_.
 
-Quickstart
-----------
-
-Install django-database-views::
-
-    pip install django-database-views
-
-Add it to your `INSTALLED_APPS`::
-
-    INSTALLED_APPS = (
-        ...
-        'database_views.apps.DatabaseViewsConfig',
-        ...
-    )
-
-Create a model for your index template and optionally set its table name. This should be added to
- your app's models.py::
-
-    from database_views.models import DatabaseTemplate
-
-
-    class IndexTemplate(SingleAppTemplate):
-
-        class Meta:
-            db_table = 'your_table_name'
-
-Create a response class and assign your model to it. Add this to in a response.py file in your
-app::
-
-    from databse_views.response import DatabaseTemplateResponse
-    from yourapp.models import IndexTemplate
-
-
-    class IndexResponse(DatabaseTemplateResponse):
-        model = IndexTemplate
-
-Create a view to serve your template. Add it to your app's views.py::
-
-    from database_views.views import DatabaseTemplateView
-    from yourapp.response import IndexResponse
-
-
-    class IndexView(DatabaseTemplateView):
-        app_name = 'main'
-        response_class = IndexResponse
-
-Create a route for your view in urls.py::
-
-    # path/to/your/project/urls.py
-
-    from yourapp.views import IndexView
-
-    urlpatterns = [
-        url(r'^myview', IndexView.as_view())
-    ]
-
 Running Tests
 -------------
 
@@ -107,11 +51,6 @@ To run tests use the following commands::
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requirements_dev.txt
     (myenv) $ py.test
-
-To run tests for both python 2.7 and 3.4 use the following command after activating your
-virtualenv and installing requirements::
-
-    (myenv) $ tox
 
 Credits
 -------

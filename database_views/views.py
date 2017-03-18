@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import TemplateView
 
+from .response import DatabaseTemplateResponse, CachedTemplateResponse
+
 
 class DatabaseTemplateView(TemplateView):
     """
     Base template view class.
     """
 
-    app_name = 'main'
+    app_name = None
+    model = None
+
+    def __init__(self):
+        if self.response_class is not None and isinstance(self.response_class,
+                                                          DatabaseTemplateResponse):
+            self.response_class.model = self.model
 
     @property
     def key(self):

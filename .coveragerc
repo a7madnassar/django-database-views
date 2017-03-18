@@ -6,7 +6,9 @@ omit =
     *site-packages*
     *tests*
     *.tox*
+    database_views/__init__.py
     database_views/apps.py
+    database_views/urls.py
 show_missing = True
 exclude_lines =
     raise NotImplementedError

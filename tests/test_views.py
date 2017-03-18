@@ -18,7 +18,7 @@ class TestDatabaseTemplateView:
 
         assert instance.key == key
 
-    def test_key_property_returns_key_from_query_string(self, instance):
+    def test_key_property_returns_current_key(self, instance):
         GET = {}
         request = mock.MagicMock(GET=GET)
         instance.request = request
