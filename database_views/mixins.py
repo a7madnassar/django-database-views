@@ -6,7 +6,7 @@ class CachingMixin(object):
     """
     A mixin for cache management.
     """
-    DEFAULT_TTL = 24 * 60 * 60  # 1 day
+    DEFAULT_TTL = 7 * 24 * 60 * 60  # 1 week.
     cache_prefix = ''
     cache_name = ''
 

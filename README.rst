@@ -26,6 +26,55 @@ Requirements
 * Django > 1.8
 * A database engine such as MySQL
 
+Quickstart
+----------
+Install django-database-views using pip::
+
+    pip install django-database-views
+
+Add it to your installed apps::
+
+    INSTALLED_APPS = (
+        ...
+        'database_views.apps.DatabaseViewsConfig',
+        ...
+    )
+
+Create a model to store versions for your index template in your app's models.py::
+
+    from database_views.models import AbstractTemplate
+
+
+    class IndexTemplate(AbstractTemplate):
+
+        class Meta:
+            db_table = 'your_table_name' # For example 'index_template'.
+
+Create a class-based view for your single page app in your app's views.py and assign your model
+to its `model` property::
+
+    from database_views.views import DatabaseTemplateView
+    from database_views.views import CachedTemplateResponse
+    from myapp.models import IndexTemplate
+
+
+    class IndexView(DatabaseTemplateView):
+        model = IndexTemplate
+        response_class = CachedTemplateResponse
+
+Add a route for your index page view in your project's urls.py file::
+
+    from myapp.views import IndexView
+
+    urlpatterns = [
+        ...
+        url(r'^$', IndexView.as_view())
+        ...
+    ]
+
+That's it!! Go to your new route and you should see your single page app's index template served.
+Please ensure that you configure the serving of your app's static assets properly.
+
 Features
 --------
 
@@ -33,22 +82,10 @@ Features
 * Optionally cache your templates for a configurable amount of time.
 * Works with ember-cli-deploy and more specifically with `ember-cli-deploy-mysql <https://github.com/mwpastore/ember-cli-deploy-mysql>`_.
 
-Deploying Your Single Page Application
----------------------------------------
-
-You can publish a new template to your database in any way you choose. We assume that you will
-use this to serve a Ember application, and the index template has been deployed
-to the database. The easiest way to deploy it is to use
-`ember-cli-deploy-mysql <https://github.com/mwpastore/ember-cli-deploy-mysql>`_.
-
-If you are not using Ember you can still use this project to serve your application. You just
-have to properly deploy your template to your MySQL database. For template model field reference
-read the `docs <https://django-database-views.readthedocs.io>`_.
-
 Running Tests
 -------------
 
-To run tests use the following commands::
+To run tests use the following commands from the root of this project::
 
     source <YOURVIRTUALENV>/bin/activate
     (myenv) $ pip install -r requirements_test.txt
