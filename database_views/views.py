@@ -13,8 +13,7 @@ class DatabaseTemplateView(TemplateView):
     model = None
 
     def __init__(self):
-        if self.response_class is not None and isinstance(self.response_class,
-                                                          DatabaseTemplateResponse):
+        if self.response_class is not None and hasattr(self.response_class, 'model'):
             self.response_class.model = self.model
 
     @property

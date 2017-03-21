@@ -59,6 +59,7 @@ to its `model` property::
 
 
     class IndexView(DatabaseTemplateView):
+        app_name = 'main'
         model = IndexTemplate
         response_class = CachedTemplateResponse
 
